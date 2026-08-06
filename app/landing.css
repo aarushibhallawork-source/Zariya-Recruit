@@ -733,8 +733,8 @@
 .panelBody {
   width: 100%;
   font-weight: 500;
-  font-size: 20rem;
-  line-height: 27rem;
+  font-size: 18rem;
+  line-height: 24rem;
   color: rgba(255, 241, 229, 0.7);
 }
 
@@ -810,7 +810,7 @@
 .step p {
   width: 100%;
   font-weight: 500;
-  font-size: 20rem;
-  line-height: 27rem;
+  font-size: 18rem;
+  line-height: 24rem;
   color: #fff;
 }

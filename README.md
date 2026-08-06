@@ -71,6 +71,10 @@ their leading moved to 27 to keep the ~1.35 ratio the design uses. Two blocks re
 a result: `.problemCards` sits 3px higher and `.tabRow` 6px higher, both because the text
 above them is shorter. That's the same way the Figma auto-layout would respond.
 
+`.panelBody` and `.step p` later went to 18/24, following an updated `727:9470`. The steps
+resize themselves with it (82 tall rather than 85, so the column is 400 rather than 412) —
+those heights come from the content, not from hard-coded values.
+
 ## Fonts
 
 `app/fonts/` holds **GT Alpina Trial** (Standard Bold + Standard Medium Italic) and
