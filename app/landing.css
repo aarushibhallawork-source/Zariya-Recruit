@@ -1,0 +1,500 @@
+/* =================================================================
+   Zariya Recruit — landing page
+   Figma: node 725:8078 · frame 1812 × 3077
+   All values are in `rem`, where 1rem === 1 Figma pixel.
+   ================================================================= */
+
+.canvas {
+  position: relative;
+  width: 1812rem;
+  height: 3077rem;
+  margin: 0 auto;
+  background: var(--espresso);
+  overflow: hidden;
+  color: var(--cream);
+}
+
+/* -----------------------------------------------------------------
+   Hero background photo + top scrim
+   ----------------------------------------------------------------- */
+.heroPhoto {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1812rem;
+  height: 1018.751rem;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+.heroPhoto img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100.1%;
+  object-fit: cover;
+  max-width: none;
+}
+
+.topScrim {
+  position: absolute;
+  left: 1.119rem;
+  top: 0;
+  width: 1810.881rem;
+  height: 217.549rem;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.5) 96.033%
+  );
+}
+
+/* -----------------------------------------------------------------
+   Nav bar
+   ----------------------------------------------------------------- */
+.nav {
+  position: absolute;
+  left: 61rem;
+  top: 55.773rem;
+  width: 1712rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16rem;
+  border-bottom: 1px solid rgba(255, 241, 229, 0.5);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 6rem;
+}
+
+.brand .mark {
+  width: 30rem;
+  height: 30rem;
+  flex-shrink: 0;
+}
+
+.brand .wordmark {
+  font-weight: 600;
+  font-size: 22rem;
+  line-height: 1;
+  color: var(--cream);
+  white-space: nowrap;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 36rem;
+  font-weight: 500;
+  font-size: 16rem;
+  line-height: 22rem;
+  text-align: center;
+  color: var(--cream);
+  white-space: nowrap;
+}
+
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 20rem;
+}
+
+.btnGhost,
+.btnSolid {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  padding: 9rem 15rem;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 16rem;
+  line-height: 22rem;
+  text-align: center;
+  white-space: nowrap;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.btnGhost {
+  border: 1px solid var(--cream);
+  background: transparent;
+  color: var(--cream);
+}
+
+.btnSolid {
+  border: 1px solid var(--cream);
+  background: var(--cream);
+  color: var(--espresso);
+}
+
+.btnSolid .arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22rem;
+  height: 22rem;
+  flex-shrink: 0;
+}
+
+.btnSolid .arrow img {
+  width: 12.375rem;
+  height: 12.375rem;
+}
+
+/* -----------------------------------------------------------------
+   Hero copy
+   ----------------------------------------------------------------- */
+.eyebrow {
+  position: absolute;
+  left: 50%;
+  top: 217.549rem;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10rem;
+  padding: 10rem 20rem;
+  border-radius: 25rem;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.eyebrow .dot {
+  width: 7.929rem;
+  height: 7.929rem;
+  border-radius: 50%;
+  background: #e7b275;
+  flex-shrink: 0;
+}
+
+.eyebrow span {
+  font-weight: 400;
+  font-size: 20rem;
+  line-height: 27rem;
+  text-align: center;
+  color: var(--cream);
+  white-space: nowrap;
+}
+
+.hero {
+  position: absolute;
+  left: 50%;
+  top: 315.549rem;
+  transform: translateX(-50%);
+  width: 868rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40rem;
+  text-align: center;
+  color: var(--cream);
+}
+
+.heroHeadline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16rem;
+  width: 100%;
+}
+
+.heroHeadline h1 {
+  font-family: "GT Alpina Trial", Georgia, serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 68rem;
+  line-height: 77rem;
+  letter-spacing: -0.68rem;
+  white-space: nowrap;
+}
+
+.heroHeadline .italic {
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: -1.36rem;
+}
+
+.heroSub {
+  font-weight: 500;
+  font-size: 18rem;
+  line-height: 24rem;
+  white-space: pre;
+}
+
+/* -----------------------------------------------------------------
+   "Brought to you by the best"
+   ----------------------------------------------------------------- */
+.sectionHead {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28rem;
+  text-align: center;
+}
+
+.sectionHead h2 {
+  font-family: "GT Alpina Trial", Georgia, serif;
+  font-weight: 700;
+  font-size: 68rem;
+  line-height: 77rem;
+  letter-spacing: -0.68rem;
+  color: var(--cream);
+  white-space: nowrap;
+}
+
+.sectionHead p {
+  font-weight: 500;
+  font-size: 22rem;
+  line-height: 30rem;
+}
+
+.bestHead {
+  position: absolute;
+  left: 50%;
+  top: 1129.723rem;
+  transform: translateX(-50%);
+  width: 804rem;
+}
+
+.bestHead p {
+  color: rgba(255, 241, 229, 0.8);
+  white-space: nowrap;
+}
+
+/* -----------------------------------------------------------------
+   Credibility strip + product shot
+   ----------------------------------------------------------------- */
+.showcase {
+  position: absolute;
+  left: 50%;
+  top: 1289rem;
+  transform: translateX(-50%);
+  width: 1582rem;
+  height: 990rem;
+  overflow: hidden;
+  border-radius: 10rem 10rem 0 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(199, 116, 44, 0) 18.102%,
+    rgba(253, 242, 232, 0.15) 100%
+  );
+}
+
+.badgeRow {
+  position: absolute;
+  left: 50%;
+  top: 54.096rem;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 46rem;
+}
+
+.badgeCard {
+  display: flex;
+  align-items: center;
+  height: 102rem;
+  padding: 19rem 31rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.badgeCard .inner {
+  display: flex;
+  align-items: center;
+  gap: 16rem;
+  height: 100%;
+}
+
+.badgeCard .label {
+  font-weight: 500;
+  font-size: 18rem;
+  line-height: 24rem;
+  text-align: center;
+  color: var(--cream);
+  white-space: nowrap;
+}
+
+.isbLogo {
+  height: 100%;
+  aspect-ratio: 110 / 53;
+  flex-shrink: 0;
+}
+
+.iiitLogo {
+  width: 189rem;
+  height: 62rem;
+  flex-shrink: 0;
+}
+
+.makersLockup {
+  display: flex;
+  align-items: center;
+  gap: 6rem;
+}
+
+.makersLockup .mark {
+  width: 30rem;
+  height: 30rem;
+  flex-shrink: 0;
+}
+
+.makersLockup .text {
+  font-weight: 500;
+  font-size: 20rem;
+  line-height: 1;
+  color: var(--cream);
+  white-space: nowrap;
+}
+
+.productShot {
+  position: absolute;
+  left: 50%;
+  top: 276.459rem;
+  transform: translateX(-50%);
+  width: 1210.878rem;
+  height: 713.542rem;
+  border: 8rem solid var(--amber);
+  border-bottom: none;
+  border-radius: 13rem 13rem 0 0;
+}
+
+.productShot .clip {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 13rem 13rem 0 0;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.productShot img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 124.33%;
+  object-fit: cover;
+  object-position: top;
+  max-width: none;
+}
+
+/* -----------------------------------------------------------------
+   "Built for hiring that doesn't scale"
+   ----------------------------------------------------------------- */
+.problems {
+  position: absolute;
+  left: 369rem;
+  top: 2439rem;
+  width: 1074rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80rem;
+}
+
+.problems .sectionHead p {
+  color: rgba(255, 241, 229, 0.9);
+  white-space: nowrap;
+}
+
+.problemCards {
+  display: flex;
+  align-items: center;
+  gap: 39rem;
+  width: 100%;
+}
+
+.problemCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10rem;
+  width: 332rem;
+  height: 262rem;
+  padding: 31rem;
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.problemCard .iconBox {
+  display: flex;
+  align-items: center;
+  padding: 10rem;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.problemCard .iconBox img {
+  width: 32rem;
+  height: 32rem;
+  flex-shrink: 0;
+}
+
+.problemCard h3 {
+  width: 100%;
+  font-weight: 600;
+  font-size: 22rem;
+  line-height: 30rem;
+  color: var(--cream);
+}
+
+.problemCard p {
+  width: 100%;
+  font-weight: 500;
+  font-size: 18rem;
+  line-height: 24rem;
+  color: rgba(255, 241, 229, 0.8);
+}
+
+/* -----------------------------------------------------------------
+   Grid rules
+   Figma vectors 736:85351 / 736:85352 / 736:85353 (horizontal) and
+   727:9385 / 727:9386 (vertical). All one stroke: #6b5b54, 1px.
+   ----------------------------------------------------------------- */
+.rule {
+  position: absolute;
+  background: #6b5b54;
+}
+
+.ruleH {
+  left: 0;
+  width: 1812rem;
+  height: 1px;
+}
+
+.ruleV {
+  top: 2356rem;
+  width: 1px;
+}
+
+/* Under the product shot */
+.ruleH1 {
+  top: 2279rem;
+}
+
+/* Top and bottom of the "doesn't scale" band */
+.ruleH2 {
+  top: 2355.227rem;
+}
+
+.ruleH3 {
+  top: 3012.907rem;
+}
+
+.ruleV1 {
+  left: 118.218rem;
+  height: 656.877rem;
+}
+
+.ruleV2 {
+  left: 1697rem;
+  height: 657.385rem;
+}

@@ -1,40 +1,83 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ---------------------------------------------------------------
+   Fonts
+   --------------------------------------------------------------- */
+@font-face {
+  font-family: "GT Alpina Trial";
+  src: url("/fonts/GT-Alpina-Standard-Bold-Trial.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "GT Alpina Trial";
+  src: url("/fonts/GT-Alpina-Standard-Medium-Italic-Trial.otf") format("opentype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: block;
+}
+@font-face {
+  font-family: "General Sans";
+  src: url("/fonts/GeneralSans-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "General Sans";
+  src: url("/fonts/GeneralSans-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "General Sans";
+  src: url("/fonts/GeneralSans-Semibold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: block;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* ---------------------------------------------------------------
+   Scaling
+   The Figma frame is 1812px wide. `1rem === 1 Figma pixel`, so every
+   measurement below can be copied straight out of the design.
+   --------------------------------------------------------------- */
 html {
-  height: 100%;
+  font-size: min(1px, calc(100vw / 1812));
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--espresso);
+  overflow-x: hidden;
+  font-family: "General Sans", -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
+:root {
+  --espresso: #2b150b;
+  --cream: #fff1e5;
+  --amber: #d19c58;
+}
+
+p,
+h1,
+h2,
+h3 {
   margin: 0;
+  font-weight: inherit;
 }
 
 a {
@@ -42,8 +85,7 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+img,
+svg {
+  display: block;
 }
