@@ -38,6 +38,45 @@ const PROBLEMS = [
   },
 ];
 
+/**
+ * Figma reuses the same three icon exports across all five tabs (the first
+ * three share one file), so these repeat deliberately rather than by mistake.
+ */
+const TABS = [
+  {
+    icon: "/assets/icon-volume.svg",
+    title: "AI Interviews",
+    body: "Automated video interviews with live scoring.",
+  },
+  {
+    icon: "/assets/icon-volume.svg",
+    title: "Screening Calls",
+    body: "AI caller for outreach, scheduling & follow-ups.",
+  },
+  {
+    icon: "/assets/icon-volume.svg",
+    title: "Resume Parser",
+    body: "1,000 resumes categorized by role & skill instantly.",
+  },
+  {
+    icon: "/assets/icon-attrition.svg",
+    title: "Communications",
+    body: "Automated emails, reminders, offers & rejections.",
+  },
+  {
+    icon: "/assets/icon-quality.svg",
+    title: "Built-in ATS",
+    body: "Pipelines, rounds, notes & decisions in one place.",
+  },
+];
+
+const STEPS = [
+  "Candidate receives a link",
+  "AI conducts the interview",
+  "Auto-scoring & report",
+  "You review the shortlist",
+];
+
 export default function Home() {
   const reduce = useReducedMotion();
   const fontsReady = useFontsReady();
@@ -188,6 +227,77 @@ export default function Home() {
       <motion.div className="rule ruleH ruleH3" variants={wipeX} {...onScrollLine} />
       <motion.div className="rule ruleV ruleV1" variants={wipeY} {...onScrollLine} />
       <motion.div className="rule ruleV ruleV2" variants={wipeY} {...onScrollLine} />
+
+      {/* Your Entire Hiring Stack */}
+      <section className="stack">
+        <motion.div className="stackRuleH stackRuleH1" variants={wipeX} {...onScrollLine} />
+        <motion.div className="stackRuleH stackRuleH2" variants={wipeX} {...onScrollLine} />
+        <motion.div className="stackRuleH stackRuleH3" variants={wipeX} {...onScrollLine} />
+        <motion.div className="stackRail stackRailLeft" variants={wipeY} {...onScrollLine} />
+        <motion.div className="stackRail stackRailRight" variants={wipeY} {...onScrollLine} />
+
+        <div className="stackHead">
+          <motion.div className="stackHeadCopy" variants={group()} {...onScroll}>
+            <motion.h2 variants={item}>
+              Your Entire Hiring Stack.
+              <br />
+              Finally in One Place.
+            </motion.h2>
+            <motion.p variants={item}>
+              Stop stitching together five different tools. Zariya gives you AI interviews,
+              parsing, calling, comms, and a built-in ATS.
+            </motion.p>
+          </motion.div>
+
+          <motion.div className="tabRow" variants={group(0.1)} {...onScroll}>
+            {TABS.map((tab, i) => (
+              <motion.div
+                className={`tab${i === 0 ? " tabActive" : ""}`}
+                key={tab.title}
+                variants={item}
+              >
+                <div className="tabIcon">
+                  <img src={tab.icon} alt="" />
+                </div>
+                <h3>{tab.title}</h3>
+                <p>{tab.body}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+
+        <motion.div className="panel" variants={lift} {...onScroll}>
+          <div className="panelCopy">
+            <div className="panelLead">
+              <h2>Let AI run the interview.</h2>
+              <p>
+                You just pick the best ones.
+                <br />
+                Actually, we’ll help with that too.
+              </p>
+            </div>
+            <p className="panelBody">
+              Zariya AI conducts structured, video-based interviews with every candidate; scoring
+              communication, depth of thinking, and role-fit automatically.
+            </p>
+          </div>
+
+          <div className="panelStage">
+            <div className="panelMedia">
+              <img src="/assets/panel-blob.svg" alt="" />
+            </div>
+
+            <div className="steps">
+              {STEPS.map((label, i) => (
+                <div className={`step${i === 0 ? " stepActive" : ""}`} key={label}>
+                  <span className="stepNum">{i + 1}</span>
+                  <p>{label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </section>
     </main>
   );
 }

@@ -2,9 +2,15 @@
 
 **Live: https://zariya-recruit.vercel.app**
 
-Pixel-exact implementation of the Figma frame
-[`725-8078`](https://www.figma.com/design/dmDyjMYMxUyPJGqsfIk6zO/Zariya-Recruit-%F0%9F%9A%A7?node-id=725-8078&m=dev)
-(design frame: **1812 x 3077**).
+Pixel-exact implementation of two stacked Figma frames, both 1812 wide:
+
+| Frame | Height | Content |
+| ----- | ------ | ------- |
+| [`725-8078`](https://www.figma.com/design/dmDyjMYMxUyPJGqsfIk6zO/Zariya-Recruit-%F0%9F%9A%A7?node-id=725-8078&m=dev) | 3077 | Hero, credibility strip, "doesn't scale" |
+| [`725-8510`](https://www.figma.com/design/dmDyjMYMxUyPJGqsfIk6zO/Zariya-Recruit-%F0%9F%9A%A7?node-id=725-8510&m=dev) | 1424 | "Your Entire Hiring Stack" + tabs + panel |
+
+Canvas total: **1812 x 4501**. `.stack` carries the 3077 offset, so everything
+inside it uses frame `725-8510`'s own coordinates straight from Figma.
 
 To run it locally:
 
@@ -113,6 +119,33 @@ The horizontals span the full 1812 frame; the verticals start at y 2356, so they
 
 The nav arrow is a 12.375px vector centred in a 22px slot (Figma inset 21.87%), not a
 22px icon — scaling it to fill the slot makes it ~78% too large.
+
+`panel-blob.svg` is 493 x 493 for a 193px circle — it carries 150px of Gaussian blur
+padding per side. Position it by the blurred box, not the circle.
+
+### Two different rule strokes
+
+Don't unify these; the design uses both:
+
+| Where | Colour |
+| ----- | ------ |
+| `.rule` (frame 725-8078, all five) | `#6b5b54` |
+| `.stackRuleH` (frame 725-8510, horizontals) | `rgba(255,255,255,.2)` |
+| `.stackRail` (frame 725-8510, verticals) | `#6b5b54` |
+
+## The tab row is not interactive
+
+Figma designs a single panel state — AI Interviews, with the cream cap on tab 1. Copy for
+the other four panels doesn't exist in the frame, so the tabs render as designed and don't
+switch. `TABS` / `STEPS` in [`app/page.tsx`](app/page.tsx) are already data-driven; wiring
+this up needs panel copy for the remaining four, not a refactor.
+
+A "Screening Calls" panel does exist off-artboard (node `728:9548`) with its own copy, but
+it sits at different dimensions (40 vs 57 padding, 290 vs 272 step width) and repeats the
+AI Interviews steps verbatim, so it reads as an earlier exploration rather than final.
+
+Figma also reuses one icon export across the first three tabs. That repetition is in the
+design, not a mistake in the code.
 
 ## Known deltas from Figma
 
