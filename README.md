@@ -62,10 +62,14 @@ Line heights are pinned to the text-box heights Figma reports rather than
 | font-size | line-height |
 | --------- | ----------- |
 | 68        | 77          |
-| 22        | 30          |
 | 20        | 27          |
 | 18        | 24          |
 | 16        | 22          |
+
+Figma's 22 and 24 steps were dropped to 20 by request, so the scale no longer has them —
+their leading moved to 27 to keep the ~1.35 ratio the design uses. Two blocks reflowed as
+a result: `.problemCards` sits 3px higher and `.tabRow` 6px higher, both because the text
+above them is shorter. That's the same way the Figma auto-layout would respond.
 
 ## Fonts
 

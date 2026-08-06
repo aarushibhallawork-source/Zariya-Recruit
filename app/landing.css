@@ -80,7 +80,7 @@
 
 .brand .wordmark {
   font-weight: 600;
-  font-size: 22rem;
+  font-size: 20rem;
   line-height: 1;
   color: var(--cream);
   white-space: nowrap;
@@ -260,8 +260,8 @@
 
 .sectionHead p {
   font-weight: 500;
-  font-size: 22rem;
-  line-height: 30rem;
+  font-size: 20rem;
+  line-height: 27rem;
 }
 
 .bestHead {
@@ -457,8 +457,8 @@
 .problemCard h3 {
   width: 100%;
   font-weight: 600;
-  font-size: 22rem;
-  line-height: 30rem;
+  font-size: 20rem;
+  line-height: 27rem;
   color: var(--cream);
 }
 
@@ -602,8 +602,8 @@
 .stackHeadCopy p {
   width: 100%;
   font-weight: 500;
-  font-size: 22rem;
-  line-height: 30rem;
+  font-size: 20rem;
+  line-height: 27rem;
   color: rgba(255, 241, 229, 0.9);
 }
 
@@ -663,8 +663,8 @@
 .tab h3 {
   width: 100%;
   font-weight: 600;
-  font-size: 22rem;
-  line-height: 30rem;
+  font-size: 20rem;
+  line-height: 27rem;
   color: var(--cream);
 }
 
@@ -725,15 +725,15 @@
 .panelLead p {
   width: 100%;
   font-weight: 500;
-  font-size: 24rem;
-  line-height: 32rem;
+  font-size: 20rem;
+  line-height: 27rem;
 }
 
 .panelBody {
   width: 100%;
   font-weight: 500;
-  font-size: 22rem;
-  line-height: 30rem;
+  font-size: 20rem;
+  line-height: 27rem;
   color: rgba(255, 241, 229, 0.7);
 }
 
