@@ -213,10 +213,11 @@
   line-height: 77rem;
   letter-spacing: -0.68rem;
   white-space: nowrap;
-  /* Widened past the bottom edge: the line box leaves only ~1.9rem under the
-     descenders, which `overflow: hidden` would shave. clip-path doesn't affect
-     layout, so the measured geometry is untouched. */
-  clip-path: inset(-40rem -40rem -6rem -40rem);
+  /* Lines descend from above, so the mask edge is the TOP: flush at 0, which is
+     safe because the ink starts ~12.7rem below it. The bottom runs long so
+     descenders ("your") never clip — the line box leaves them only ~1.4rem.
+     clip-path doesn't affect layout, so the measured geometry is untouched. */
+  clip-path: inset(0rem -40rem -40rem -40rem);
 }
 
 .heroHeadline h1 > span {

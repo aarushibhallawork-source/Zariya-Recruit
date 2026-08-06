@@ -5,6 +5,8 @@ import { motion, useReducedMotion } from "motion/react";
 import "./landing.css";
 import {
   CUE,
+  dropSoft,
+  fadeIn,
   group,
   inView,
   inViewLine,
@@ -14,7 +16,6 @@ import {
   navDrop,
   photoFade,
   photoZoom,
-  riseIn,
   useFontsReady,
   wipeX,
   wipeY,
@@ -129,7 +130,7 @@ export default function Home() {
       </motion.header>
 
       {/* Hero copy */}
-      <motion.div className="eyebrow" variants={riseIn(CUE.eyebrow)} {...intro}>
+      <motion.div className="eyebrow" variants={dropSoft(CUE.eyebrow)} {...intro}>
         <span className="dot" />
         <span>AI-Powered Hiring · Built for Modern HR Teams</span>
       </motion.div>
@@ -147,7 +148,7 @@ export default function Home() {
             </motion.span>
           </h1>
         </div>
-        <motion.p className="heroSub" variants={riseIn(CUE.sub)} {...intro}>
+        <motion.p className="heroSub" variants={fadeIn(CUE.sub)} {...intro}>
           {"You're tired of sitting through a thousand candidate interviews only to find those few gems. "}
           <br />
           We help you find them. Much faster.

@@ -10,14 +10,18 @@ import type { Variants } from "motion/react";
  */
 export const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
-/** Hero load sequence, in seconds. Read this as a timeline, top to bottom. */
+/**
+ * Hero load sequence, in seconds. Read this as a timeline, top to bottom.
+ * The headline leads; the nav follows rather than opening, so nothing moves
+ * before the words do.
+ */
 export const CUE = {
   photo: 0,
-  nav: 0.1,
-  eyebrow: 0.45,
-  line1: 0.65,
-  line2: 0.8, // 0.15s behind line 1 — enough to read as line-by-line
-  sub: 1.15,
+  line1: 0,
+  line2: 0.15, // 0.15s behind line 1 — enough to read as line-by-line
+  nav: 0.35,
+  sub: 0.9,
+  eyebrow: 1.3,
 } as const;
 
 /* ---------------------------------------------------------------- hero */
@@ -43,16 +47,25 @@ export const navDrop: Variants = {
 };
 
 /**
- * Masked line reveal. Pairs with the `clip-path` on `.heroHeadline h1`, which
- * runs 6rem past the bottom edge to protect descenders — hence 115% rather than
- * the usual 100%, so the line still starts out of sight behind that edge.
+ * Masked line reveal, descending from above. Pairs with the `clip-path` on
+ * `.heroHeadline h1`, which sits flush to the TOP edge (the ink starts ~12.7rem
+ * below it, so ascenders clear) and runs long past the bottom so descenders
+ * never clip. -115% rather than -100% keeps the incoming line behind that edge
+ * with room to spare.
  */
 export const lineReveal = (delay: number): Variants => ({
-  hidden: { y: "115%" },
-  show: { y: "0%", transition: { duration: 0.9, delay, ease: EASE } },
+  hidden: { y: "-115%" },
+  show: { y: "0%", transition: { duration: 1, delay, ease: EASE } },
 });
 
-export const riseIn = (delay: number, y = "12rem", duration = 0.7): Variants => ({
+/** Pure opacity. "Gentle appear" — deliberately without travel. */
+export const fadeIn = (delay: number, duration = 1): Variants => ({
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { duration, delay, ease: EASE } },
+});
+
+/** Small descent, sharing the nav's direction. */
+export const dropSoft = (delay: number, y = "-24rem", duration = 0.8): Variants => ({
   hidden: { opacity: 0, y },
   show: { opacity: 1, y: "0rem", transition: { duration, delay, ease: EASE } },
 });

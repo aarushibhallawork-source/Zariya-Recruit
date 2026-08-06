@@ -137,6 +137,43 @@ Don't unify these; the design uses both:
 | `.stackRuleH` (frame 725-8510, horizontals) | `rgba(255,255,255,.2)` |
 | `.stackRail` (frame 725-8510, verticals) | `#6b5b54` |
 
+## Animation
+
+[`app/anim.ts`](app/anim.ts) holds the whole motion system. One expo-out curve
+(`[0.16, 1, 0.3, 1]`) is shared throughout — that's what makes separate elements read as
+one move rather than several.
+
+The hero plays a single timeline on load, held in `CUE`. The headline leads and the nav
+follows, so nothing moves before the words do:
+
+| Cue | Element | Motion | Duration |
+| --- | ------- | ------ | -------- |
+| 0.00 | Headline line 1 | masked, descends from above | 1.0s |
+| 0.15 | Headline line 2 | masked, descends from above | 1.0s |
+| 0.35 | Nav | descends from above the canvas | 1.0s |
+| 0.90 | Sub-copy | pure opacity, no travel | 1.0s |
+| 1.30 | Eyebrow pill | descends 24 | 0.8s |
+
+Everything else reveals on scroll via `whileInView` with `once: true`.
+
+### The headline mask
+
+Lines descend from behind the **top** edge of their `h1`. That edge is a `clip-path`, not
+`overflow: hidden`, for two reasons: clip-path doesn't affect layout, and it can be pushed
+past the box on the other sides. The bottom runs 40 long because the 77 line box leaves the
+descenders in "your" only ~1.4 of clearance, which `overflow: hidden` would shave.
+
+Measured against the live render: ascenders clear the top edge by 12.72 (italic included),
+and the incoming line sits 11.55 above it before it starts. Both margins have to hold at
+once — that's the constraint the mask is solving.
+
+If you flip the direction back, the clip edges swap with it: entering from below needs the
+clip on the bottom and the start at `+115%`.
+
+Only `transform` and `opacity` animate, so the resting layout is exactly the measured
+design. `prefers-reduced-motion` renders that resting state with no movement, and a
+`<noscript>` block does the same if JS never arrives.
+
 ## The tab row is not interactive
 
 Figma designs a single panel state — AI Interviews, with the cream cap on tab 1. Copy for
