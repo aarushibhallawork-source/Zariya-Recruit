@@ -1,11 +1,54 @@
 # Zariya Recruit — Landing Page
 
+**Live: https://aarushibhallawork-source.github.io/Zariya-Recruit/**
+
 Pixel-exact implementation of the Figma frame
 [`725-8078`](https://www.figma.com/design/dmDyjMYMxUyPJGqsfIk6zO/Zariya-Recruit-%F0%9F%9A%A7?node-id=725-8078&m=dev)
 (design frame: **1812 × 3077**).
 
+To run it locally:
+
 ```bash
-npm run dev
+npm install && npm run dev
+```
+
+There is no `.html` file to open — Next.js generates the HTML from
+[`app/page.tsx`](app/page.tsx). Opening a built file over `file://` won't work either,
+since the asset URLs are absolute; use the dev server or the live link above.
+
+## Deployment
+
+Every push to `main` triggers [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml),
+which builds a static export and publishes it to GitHub Pages.
+
+Pages serves the site from a repo subpath (`/Zariya-Recruit/`), which the build has to
+account for. Both switches are env-gated so local development is untouched:
+
+| Variable                | Effect                                    |
+| ----------------------- | ----------------------------------------- |
+| `STATIC_EXPORT=1`       | `output: "export"` + `trailingSlash: true` |
+| `NEXT_PUBLIC_BASE_PATH` | Next's `basePath`                          |
+
+`npm run dev` and `npm run build` set neither, so they behave normally. The workflow
+takes `NEXT_PUBLIC_BASE_PATH` from `actions/configure-pages`, so renaming the repo won't
+silently break every asset URL.
+
+Three things make the subpath work:
+
+- **Next's own chunks** get `basePath` applied automatically.
+- **Fonts** load via `next/font/local` (in [`app/layout.tsx`](app/layout.tsx)) rather than
+  hand-written `@font-face`. Next emits them under `_next/static/media/` and references
+  them relatively from the CSS, so they follow the base path. A hard-coded
+  `url("/fonts/…")` would 404 under the subpath.
+- **Images in `public/`** are referenced *without* a leading slash (`assets/hero-bg.webp`),
+  so they resolve against the page URL — correct both at `/` in dev and at
+  `/Zariya-Recruit/` on Pages. This is why `trailingSlash` is on: relative paths need the
+  page to be a directory index.
+
+To reproduce a Pages build locally:
+
+```bash
+STATIC_EXPORT=1 NEXT_PUBLIC_BASE_PATH=/Zariya-Recruit npm run build
 ```
 
 ## How the design maps to the code
@@ -13,7 +56,8 @@ npm run dev
 - [`app/page.tsx`](app/page.tsx) — markup, one block per Figma frame.
 - [`app/landing.css`](app/landing.css) — all layout, positioned absolutely with the exact
   Figma coordinates.
-- [`app/globals.css`](app/globals.css) — fonts + the scaling rule.
+- [`app/globals.css`](app/globals.css) — reset + the scaling rule.
+- [`app/layout.tsx`](app/layout.tsx) — font loading.
 
 ### The `1rem === 1 Figma pixel` rule
 
@@ -42,14 +86,26 @@ Line heights are pinned to the text-box heights Figma reports rather than
 
 ## Fonts
 
-`public/fonts/` holds **GT Alpina Trial** (Standard Bold + Standard Medium Italic) and
-**General Sans** (Regular / Medium / Semibold), copied from the local font library.
+`app/fonts/` holds **GT Alpina Trial** (Standard Bold + Standard Medium Italic) and
+**General Sans** (Regular / Medium / Semibold), loaded through `next/font/local`.
 
 > GT Alpina is a **trial** licence. Swap in the licensed cuts before this ships.
 
 ## Assets
 
 All artwork in `public/assets/` is exported from the Figma node — nothing is a stand-in.
+
+The two photographs are WebP, re-encoded from the Figma PNGs (3.7MB → 365KB, -90%):
+
+| File            | Source                | Shipped                    |
+| --------------- | --------------------- | -------------------------- |
+| `hero-bg.webp`  | 1672 × 941 PNG, 2.6MB | same size, q82, 209KB      |
+| `dashboard.webp`| 4096 × 3001 PNG, 1.2MB| 2400 × 1758, q92, 151KB    |
+
+The dashboard is downscaled because it only ever renders ~1195 CSS px wide — 2400px
+covers a 2× display exactly, and 4096 was wasted bytes. It's held at q92 rather than the
+q82 used for the photo because it's full of small UI text, where WebP artefacts show.
+Measured against the original at display resolution: RMSE 2.22/255.
 
 `isb-logo.svg` is the one composite: Figma ships the ISB mark as **seven** separate
 vectors positioned by percentage inset inside a 110 × 53 box. They're flattened into a

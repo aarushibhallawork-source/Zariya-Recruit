@@ -1,41 +1,7 @@
 /* ---------------------------------------------------------------
-   Fonts
+   Fonts are declared in app/layout.tsx via next/font/local, which
+   exposes --font-alpina and --font-general-sans.
    --------------------------------------------------------------- */
-@font-face {
-  font-family: "GT Alpina Trial";
-  src: url("/fonts/GT-Alpina-Standard-Bold-Trial.otf") format("opentype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: block;
-}
-@font-face {
-  font-family: "GT Alpina Trial";
-  src: url("/fonts/GT-Alpina-Standard-Medium-Italic-Trial.otf") format("opentype");
-  font-weight: 500;
-  font-style: italic;
-  font-display: block;
-}
-@font-face {
-  font-family: "General Sans";
-  src: url("/fonts/GeneralSans-Regular.otf") format("opentype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: block;
-}
-@font-face {
-  font-family: "General Sans";
-  src: url("/fonts/GeneralSans-Medium.otf") format("opentype");
-  font-weight: 500;
-  font-style: normal;
-  font-display: block;
-}
-@font-face {
-  font-family: "General Sans";
-  src: url("/fonts/GeneralSans-Semibold.otf") format("opentype");
-  font-weight: 600;
-  font-style: normal;
-  font-display: block;
-}
 
 /* ---------------------------------------------------------------
    Scaling
@@ -61,7 +27,7 @@ body {
 body {
   background: var(--espresso);
   overflow-x: hidden;
-  font-family: "General Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-general-sans), -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

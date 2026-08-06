@@ -203,7 +203,7 @@
 }
 
 .heroHeadline h1 {
-  font-family: "GT Alpina Trial", Georgia, serif;
+  font-family: var(--font-alpina), Georgia, serif;
   font-weight: 700;
   font-style: normal;
   font-size: 68rem;
@@ -238,7 +238,7 @@
 }
 
 .sectionHead h2 {
-  font-family: "GT Alpina Trial", Georgia, serif;
+  font-family: var(--font-alpina), Georgia, serif;
   font-weight: 700;
   font-size: 68rem;
   line-height: 77rem;
