@@ -32,6 +32,23 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${alpina.variable} ${generalSans.variable}`}>
+      <head>
+        {/* The markup ships in its pre-animation state (hidden/offset), so without
+            JS the page would render blank. Reset to the resting design. */}
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: `<style>
+              .nav, .eyebrow, .heroSub, .sectionHead > *, .badgeCard,
+              .productShot, .problemCard, .rule,
+              .heroHeadline h1 > span, .heroPhoto img {
+                opacity: 1 !important;
+                transform: none !important;
+              }
+              .heroPhoto { opacity: .75 !important; }
+            </style>`,
+          }}
+        />
+      </head>
       <body>{children}</body>
     </html>
   );

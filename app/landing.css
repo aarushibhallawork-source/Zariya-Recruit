@@ -151,9 +151,11 @@
    ----------------------------------------------------------------- */
 .eyebrow {
   position: absolute;
-  left: 50%;
+  left: 0;
+  right: 0;
   top: 217.549rem;
-  transform: translateX(-50%);
+  width: fit-content;
+  margin-inline: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -182,10 +184,11 @@
 
 .hero {
   position: absolute;
-  left: 50%;
+  left: 0;
+  right: 0;
   top: 315.549rem;
-  transform: translateX(-50%);
   width: 868rem;
+  margin-inline: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -210,6 +213,14 @@
   line-height: 77rem;
   letter-spacing: -0.68rem;
   white-space: nowrap;
+  /* Widened past the bottom edge: the line box leaves only ~1.9rem under the
+     descenders, which `overflow: hidden` would shave. clip-path doesn't affect
+     layout, so the measured geometry is untouched. */
+  clip-path: inset(-40rem -40rem -6rem -40rem);
+}
+
+.heroHeadline h1 > span {
+  display: block;
 }
 
 .heroHeadline .italic {
@@ -255,10 +266,11 @@
 
 .bestHead {
   position: absolute;
-  left: 50%;
+  left: 0;
+  right: 0;
   top: 1129.723rem;
-  transform: translateX(-50%);
   width: 804rem;
+  margin-inline: auto;
 }
 
 .bestHead p {
@@ -271,10 +283,11 @@
    ----------------------------------------------------------------- */
 .showcase {
   position: absolute;
-  left: 50%;
+  left: 0;
+  right: 0;
   top: 1289rem;
-  transform: translateX(-50%);
   width: 1582rem;
+  margin-inline: auto;
   height: 990rem;
   overflow: hidden;
   border-radius: 10rem 10rem 0 0;
@@ -287,9 +300,11 @@
 
 .badgeRow {
   position: absolute;
-  left: 50%;
+  left: 0;
+  right: 0;
   top: 54.096rem;
-  transform: translateX(-50%);
+  width: fit-content;
+  margin-inline: auto;
   display: flex;
   align-items: center;
   gap: 46rem;
@@ -354,10 +369,11 @@
 
 .productShot {
   position: absolute;
-  left: 50%;
+  left: 0;
+  right: 0;
   top: 276.459rem;
-  transform: translateX(-50%);
   width: 1210.878rem;
+  margin-inline: auto;
   height: 713.542rem;
   border: 8rem solid var(--amber);
   border-bottom: none;
@@ -468,11 +484,13 @@
   left: 0;
   width: 1812rem;
   height: 1px;
+  transform-origin: left center;
 }
 
 .ruleV {
   top: 2356rem;
   width: 1px;
+  transform-origin: center top;
 }
 
 /* Under the product shot */
