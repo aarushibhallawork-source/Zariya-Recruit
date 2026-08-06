@@ -1,10 +1,10 @@
 # Zariya Recruit — Landing Page
 
-**Live: https://aarushibhallawork-source.github.io/Zariya-Recruit/**
+**Live: https://zariya-recruit.vercel.app**
 
 Pixel-exact implementation of the Figma frame
 [`725-8078`](https://www.figma.com/design/dmDyjMYMxUyPJGqsfIk6zO/Zariya-Recruit-%F0%9F%9A%A7?node-id=725-8078&m=dev)
-(design frame: **1812 × 3077**).
+(design frame: **1812 x 3077**).
 
 To run it locally:
 
@@ -18,38 +18,15 @@ since the asset URLs are absolute; use the dev server or the live link above.
 
 ## Deployment
 
-Every push to `main` triggers [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml),
-which builds a static export and publishes it to GitHub Pages.
-
-Pages serves the site from a repo subpath (`/Zariya-Recruit/`), which the build has to
-account for. Both switches are env-gated so local development is untouched:
-
-| Variable                | Effect                                    |
-| ----------------------- | ----------------------------------------- |
-| `STATIC_EXPORT=1`       | `output: "export"` + `trailingSlash: true` |
-| `NEXT_PUBLIC_BASE_PATH` | Next's `basePath`                          |
-
-`npm run dev` and `npm run build` set neither, so they behave normally. The workflow
-takes `NEXT_PUBLIC_BASE_PATH` from `actions/configure-pages`, so renaming the repo won't
-silently break every asset URL.
-
-Three things make the subpath work:
-
-- **Next's own chunks** get `basePath` applied automatically.
-- **Fonts** load via `next/font/local` (in [`app/layout.tsx`](app/layout.tsx)) rather than
-  hand-written `@font-face`. Next emits them under `_next/static/media/` and references
-  them relatively from the CSS, so they follow the base path. A hard-coded
-  `url("/fonts/…")` would 404 under the subpath.
-- **Images in `public/`** are referenced *without* a leading slash (`assets/hero-bg.webp`),
-  so they resolve against the page URL — correct both at `/` in dev and at
-  `/Zariya-Recruit/` on Pages. This is why `trailingSlash` is on: relative paths need the
-  page to be a directory index.
-
-To reproduce a Pages build locally:
+Hosted on Vercel (project `zariya-recruit`), which runs Next.js natively at the domain
+root, so `next.config.ts` needs no configuration at all:
 
 ```bash
-STATIC_EXPORT=1 NEXT_PUBLIC_BASE_PATH=/Zariya-Recruit npm run build
+npx vercel --prod
 ```
+
+Fonts load through `next/font/local` in [`app/layout.tsx`](app/layout.tsx) rather than
+hand-written `@font-face`, so Next fingerprints them and emits the right URLs.
 
 ## How the design maps to the code
 

@@ -2,17 +2,17 @@ import "./landing.css";
 
 const PROBLEMS = [
   {
-    icon: "assets/icon-volume.svg",
+    icon: "/assets/icon-volume.svg",
     title: "High Interview Volume",
     body: "You’re screening hundreds across roles. interviews become rushed, inconsistent, and impossible to standardize.",
   },
   {
-    icon: "assets/icon-attrition.svg",
+    icon: "/assets/icon-attrition.svg",
     title: "High Attrition Roles",
     body: "You're always hiring, but never building a stable pipeline. Every candidate must meet the same bar, every time.",
   },
   {
-    icon: "assets/icon-quality.svg",
+    icon: "/assets/icon-quality.svg",
     title: "High Quality Hiring",
     body: "You need intelligence, not gut feel. You need high intellect interviewing and evaluations by a domain expert.",
   },
@@ -23,14 +23,14 @@ export default function Home() {
     <main className="canvas">
       {/* Hero background */}
       <div className="heroPhoto">
-        <img src="assets/hero-bg.webp" alt="" />
+        <img src="/assets/hero-bg.webp" alt="" />
       </div>
       <div className="topScrim" />
 
       {/* Nav */}
       <header className="nav">
         <div className="brand">
-          <img className="mark" src="assets/logo-star.svg" alt="" />
+          <img className="mark" src="/assets/logo-star.svg" alt="" />
           <p className="wordmark">Zariya Recruit</p>
         </div>
 
@@ -47,7 +47,7 @@ export default function Home() {
           <button className="btnSolid" type="button">
             Request a Demo
             <span className="arrow">
-              <img src="assets/arrow.svg" alt="" />
+              <img src="/assets/arrow.svg" alt="" />
             </span>
           </button>
         </div>
@@ -84,7 +84,7 @@ export default function Home() {
           <div className="badgeCard">
             <div className="inner">
               <p className="label">Built at</p>
-              <img className="isbLogo" src="assets/isb-logo.svg" alt="ISB" />
+              <img className="isbLogo" src="/assets/isb-logo.svg" alt="ISB" />
             </div>
           </div>
 
@@ -93,7 +93,7 @@ export default function Home() {
               <p className="label">Backed by</p>
               <img
                 className="iiitLogo"
-                src="assets/iiit-logo.svg"
+                src="/assets/iiit-logo.svg"
                 alt="Ministry of Electronics and Information Technology"
               />
             </div>
@@ -103,7 +103,7 @@ export default function Home() {
             <div className="inner">
               <p className="label">Makers of</p>
               <div className="makersLockup">
-                <img className="mark" src="assets/logo-star.svg" alt="" />
+                <img className="mark" src="/assets/logo-star.svg" alt="" />
                 <p className="text">Interviews by Zariya AI</p>
               </div>
             </div>
@@ -112,7 +112,7 @@ export default function Home() {
 
         <div className="productShot">
           <div className="clip">
-            <img src="assets/dashboard.webp" alt="Zariya Recruit screening evaluation" />
+            <img src="/assets/dashboard.webp" alt="Zariya Recruit screening evaluation" />
           </div>
         </div>
       </section>
